@@ -7,6 +7,14 @@ const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const PORT = 3000;
 const app = (0, express_1.default)();
+app.get('/test', (req, res) => {
+    const testObj = {
+        name: 'Jarrett',
+        age: 40,
+        male: true
+    };
+    res.json(testObj);
+});
 app.use(express_1.default.static(path_1.default.join(__dirname, '../public')));
 app.get('/', (req, res, next) => {
     try {
