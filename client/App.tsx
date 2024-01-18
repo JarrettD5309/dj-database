@@ -1,8 +1,9 @@
 import React, { ReactElement, useEffect, useState } from "react";
+import { record } from "../types/types";
 
 const App = (): ReactElement => {
 
-  const [records, setRecords] = useState();
+  const [records, setRecords] = useState<record[]>();
 
   useEffect(() => {
     fetch('http://localhost:3000/records')
