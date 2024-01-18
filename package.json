@@ -7,7 +7,8 @@
     "build:dev": "tsc --watch --preserveWatchOutput",
     "start:dev": "nodemon dist/index.js",
     "webpack:dev": "webpack -w",
-    "dev": "concurrently \"npm run build:dev\" \"npm run start:dev\" \"npm run webpack:dev\""
+    "dev": "concurrently \"npm run build:dev\" \"npm run start:dev\" \"npm run webpack:dev\"",
+    "lint": "eslint . --ext ts,tsx"
   },
   "keywords": [],
   "author": "",
@@ -22,8 +23,12 @@
     "@types/node": "^20.11.0",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
     "concurrently": "^8.2.2",
     "css-loader": "^6.9.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.2",
     "nodemon": "^3.0.2",
     "style-loader": "^3.3.4",
     "ts-loader": "^9.5.1",

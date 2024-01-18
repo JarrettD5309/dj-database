@@ -8,6 +8,6 @@ interface record {
     release: string;
     discogsLink: string;
     year: number;
-};
+}
 
 export { type record };

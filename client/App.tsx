@@ -22,7 +22,7 @@ const App = (): ReactElement => {
     <button onClick={handleTestClick}>TEST</button>
     </>
     
-  )
+  );
 };
 
 export default App;
