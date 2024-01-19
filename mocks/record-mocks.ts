@@ -1,6 +1,6 @@
-import { record } from '../types/types';
+import { Record } from '../types/types';
 
-const recordOne: record = {
+const recordOne: Record = {
     artist: 'Joey Beltram',
     songTitle: 'Energy Flash',
     genres: ['house', 'techno'],
@@ -12,9 +12,9 @@ const recordOne: record = {
     year: 1990
 };
 
-const recordTwo: record = {
+const recordTwo: Record = {
     artist: 'Black Riot',
-    songTitle: 'A Day In The Life (CLub Mix)',
+    songTitle: 'A Day In The Life (Club Mix)',
     genres: ['house'],
     bpm: 122,
     position: 'A1',
@@ -24,6 +24,6 @@ const recordTwo: record = {
     year: 1988
 };
 
-const recordCollection: record[] = [recordOne, recordTwo];
+const recordCollection: Record[] = [recordOne, recordTwo];
 
 export { recordOne, recordTwo, recordCollection };

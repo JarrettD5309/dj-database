@@ -1,9 +1,10 @@
 import React, { ReactElement, useEffect, useState } from "react";
-import { record } from "../types/types";
+import { Record } from "../types/types";
+import Table from "./components/table/Table";
 
 const App = (): ReactElement => {
 
-  const [records, setRecords] = useState<record[]>();
+  const [records, setRecords] = useState<Record[]>();
 
   useEffect(() => {
     fetch('http://localhost:3000/records')
@@ -20,6 +21,7 @@ const App = (): ReactElement => {
     <>
     <h1>DJ Database</h1>
     <button onClick={handleTestClick}>TEST</button>
+    {records && <Table records={records}></Table>}
     </>
     
   );
