@@ -13,17 +13,17 @@ const App = (): ReactElement => {
       .catch((e) => console.log(e));
   }, []);
 
-  const handleTestClick = function(): void {
+  const handleTestClick = function (): void {
     console.log(records);
   };
 
   return (
     <>
-    <h1>DJ Database</h1>
-    <button onClick={handleTestClick}>TEST</button>
-    {records && <Table records={records}></Table>}
+      <h1>DJ Database</h1>
+      <button onClick={handleTestClick}>TEST</button>
+      {records && <Table records={records}></Table>}
     </>
-    
+
   );
 };
 
