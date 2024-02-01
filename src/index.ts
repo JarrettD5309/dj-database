@@ -12,11 +12,11 @@ app.get('/records', (req: Request, res: Response<Record[]>): void => {
   res.json(recordCollection);
 });
 
-app.use(express.static(path.join(__dirname, '../../public')));
+app.use(express.static(path.join(__dirname, '../../public'), {index: false}));
 
-app.get('/', (req: Request, res: Response<string>, next: NextFunction): void => {
+app.get('*', (req: Request, res: Response<string>, next: NextFunction): void => {
   try {
-    res.send("index.html");
+    res.sendFile(path.join(__dirname, '../../public/index.html'));
     console.log('hello world');
   } catch (e) {
     next(e);

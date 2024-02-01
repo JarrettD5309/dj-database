@@ -11,10 +11,10 @@ const app = (0, express_1.default)();
 app.get('/records', (req, res) => {
     res.json(record_mocks_1.recordCollection);
 });
-app.use(express_1.default.static(path_1.default.join(__dirname, '../../public')));
-app.get('/', (req, res, next) => {
+app.use(express_1.default.static(path_1.default.join(__dirname, '../../public'), { index: false }));
+app.get('*', (req, res, next) => {
     try {
-        res.send("index.html");
+        res.sendFile(path_1.default.join(__dirname, '../../public/index.html'));
         console.log('hello world');
     }
     catch (e) {
