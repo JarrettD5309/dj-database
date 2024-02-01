@@ -15,7 +15,7 @@ const recordOne = {
 exports.recordOne = recordOne;
 const recordTwo = {
     artist: 'Black Riot',
-    songTitle: 'A Day In The Life (CLub Mix)',
+    songTitle: 'A Day In The Life (Club Mix)',
     genres: ['house'],
     bpm: 122,
     position: 'A1',
