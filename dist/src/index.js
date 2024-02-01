@@ -15,7 +15,6 @@ app.use(express_1.default.static(path_1.default.join(__dirname, '../../public'),
 app.get('*', (req, res, next) => {
     try {
         res.sendFile(path_1.default.join(__dirname, '../../public/index.html'));
-        console.log('hello world');
     }
     catch (e) {
         next(e);
