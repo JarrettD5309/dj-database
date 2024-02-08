@@ -11,3 +11,5 @@
 * Axios
 * Webpack
 * ESLint
+* Jest
+* React Testing Library
