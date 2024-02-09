@@ -1,15 +1,15 @@
 import express, { Request, Response, NextFunction, Application } from 'express';
 import path from 'path';
 
-import { recordCollection } from '../mocks/record-mocks';
-import { Record } from '../types/types';
+import { trackCollection } from '../mocks/record-mocks';
+import { Track } from '../types/classes';
 
 const PORT: number = 3000;
 
 const app: Application = express();
 
-app.get('/records', (req: Request, res: Response<Record[]>): void => {
-  res.json(recordCollection);
+app.get('/tracks', (req: Request, res: Response<Track[]>): void => {
+  res.json(trackCollection);
 });
 
 app.use(express.static(path.join(__dirname, '../../public'), {index: false}));

@@ -1,25 +1,15 @@
-interface Record {
-  artist: string;
-  songTitle: string;
-  genres: Array<string>;
-  bpm: number;
-  position: string;
-  rpm: number;
-  release: string;
-  discogsLink: string;
-  year: number;
-}
+import { Track } from "./classes";
+
 
 interface ItemProps {
-  item: Record
+  item: Track
 }
 
 interface TableProps {
-  records: Record[]
+  tracks: Track[]
 }
 
 export {
-  type Record,
   type ItemProps,
   type TableProps
 };

@@ -21,7 +21,7 @@
     $ npm run dev
     ```
 
-4. You can access the site using a web browser by navigating to the following address.
+4. You can access the site, using a web browser, by navigating to the following address.
 
     `localhost:3000`
 
