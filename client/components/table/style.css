@@ -1,3 +1,7 @@
+.click-hand {
+  cursor: pointer;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto auto;

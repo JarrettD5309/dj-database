@@ -1,5 +1,5 @@
 import { ReactElement, useEffect, useState } from "react";
-import { Track } from "../types/classes";
+import { Track } from "../shared/classes";
 import Table from "./components/table/Table";
 
 const App = (): ReactElement => {
@@ -13,6 +13,13 @@ const App = (): ReactElement => {
       .catch((e) => console.log(e));
   }, []);
 
+  const handleSort = (column: string, direction: string): void => {
+    fetch(`http://localhost:3000/sort?column=${column}&direction=${direction}`)
+    .then((res) => res.json())
+    .then((json) => setTracks(json))
+    .catch((e) => console.log(e));
+  };
+
   const handleTestClick = function (): void {
     console.log(tracks);
   };
@@ -21,7 +28,7 @@ const App = (): ReactElement => {
     <>
       <h1>DJ Database</h1>
       <button onClick={handleTestClick}>TEST</button>
-      {tracks && <Table tracks={tracks}></Table>}
+      {tracks && <Table tracks={tracks} handleSort={handleSort}></Table>}
     </>
 
   );
