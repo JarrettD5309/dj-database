@@ -8,11 +8,13 @@ const react_1 = require("react");
 const Table_1 = __importDefault(require("./components/table/Table"));
 const App = () => {
     const [tracks, setTracks] = (0, react_1.useState)();
+    const [genres, setGenres] = (0, react_1.useState)();
     (0, react_1.useEffect)(() => {
         fetch('http://localhost:3000/tracks')
             .then((res) => res.json())
             .then((json) => setTracks(json))
             .catch((e) => console.log(e));
+        //fetch genres and setGenres here
     }, []);
     const handleSort = (column, direction) => {
         fetch(`http://localhost:3000/sort?column=${column}&direction=${direction}`)

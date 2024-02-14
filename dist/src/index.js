@@ -34,6 +34,13 @@ app.get('/sort', (req, res) => {
     }
     res.json(sortedRes);
 });
+app.get('/genres', (req, res) => {
+    const genresArr = [];
+    record_mocks_1.trackCollection.forEach((element) => genresArr.push(element.genres));
+    const uniqueGenreArr = genresArr.flat()
+        .filter((genreElement, i, array) => array.indexOf(genreElement) === i);
+    res.json(uniqueGenreArr);
+});
 app.use(express_1.default.static(path_1.default.join(__dirname, '../../public'), { index: false }));
 app.get('*', (req, res, next) => {
     try {
