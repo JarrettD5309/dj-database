@@ -35,6 +35,17 @@ app.get('/sort', (req: Request<{column: string, direction: string}>, res: Respon
   res.json(sortedRes);
 });
 
+app.get('/genres', (req: Request, res: Response<string[]>): void => {
+  const genresArr: (string|string[])[] = []; 
+  
+  trackCollection.forEach((element: Track) => genresArr.push(element.genres));
+
+  const uniqueGenreArr = genresArr.flat()
+    .filter((genreElement: string, i: number, array: string[]) => array.indexOf(genreElement) === i);
+    
+  res.json(uniqueGenreArr);
+});
+
 app.use(express.static(path.join(__dirname, '../../public'), {index: false}));
 
 app.get('*', (req: Request, res: Response<string>, next: NextFunction): void => {

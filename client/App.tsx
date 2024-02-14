@@ -5,12 +5,15 @@ import Table from "./components/table/Table";
 const App = (): ReactElement => {
 
   const [tracks, setTracks] = useState<Track[]>();
+  const [genres, setGenres] = useState<string[]>();
 
   useEffect(() => {
     fetch('http://localhost:3000/tracks')
       .then((res) => res.json())
       .then((json) => setTracks(json))
       .catch((e) => console.log(e));
+
+      //fetch genres and setGenres here
   }, []);
 
   const handleSort = (column: string, direction: string): void => {
