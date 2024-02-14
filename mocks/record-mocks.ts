@@ -1,4 +1,4 @@
-import { Track } from '../types/classes';
+import { Track } from '../shared/classes';
 
 const trackOne: Track = new Track(
   'Joey Beltram',

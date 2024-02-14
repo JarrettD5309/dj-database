@@ -14,9 +14,15 @@ const App = () => {
             .then((json) => setTracks(json))
             .catch((e) => console.log(e));
     }, []);
+    const handleSort = (column, direction) => {
+        fetch(`http://localhost:3000/sort?column=${column}&direction=${direction}`)
+            .then((res) => res.json())
+            .then((json) => setTracks(json))
+            .catch((e) => console.log(e));
+    };
     const handleTestClick = function () {
         console.log(tracks);
     };
-    return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("h1", { children: "DJ Database" }), (0, jsx_runtime_1.jsx)("button", { onClick: handleTestClick, children: "TEST" }), tracks && (0, jsx_runtime_1.jsx)(Table_1.default, { tracks: tracks })] }));
+    return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("h1", { children: "DJ Database" }), (0, jsx_runtime_1.jsx)("button", { onClick: handleTestClick, children: "TEST" }), tracks && (0, jsx_runtime_1.jsx)(Table_1.default, { tracks: tracks, handleSort: handleSort })] }));
 };
 exports.default = App;

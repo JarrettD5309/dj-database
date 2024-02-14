@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.trackCollection = exports.trackFour = exports.trackThree = exports.trackTwo = exports.trackOne = void 0;
-const classes_1 = require("../types/classes");
+const classes_1 = require("../shared/classes");
 const trackOne = new classes_1.Track('Joey Beltram', 'Energy Flash', ['house', 'techno'], 126, 'A1', 45, 'Vol. 1', 'https://www.discogs.com/release/2085-Joey-Beltram-Beltram-Vol-1', 1990);
 exports.trackOne = trackOne;
 const trackTwo = new classes_1.Track('Black Riot', 'A Day In The Life (Club Mix)', ['house'], 122, 'A1', 45, 'A Day In The Life', 'https://www.discogs.com/release/8843-Black-Riot-A-Day-In-The-Life', 1988);
