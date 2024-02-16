@@ -15,7 +15,7 @@ const App = () => {
             .then((json) => setTracks(json))
             .catch((e) => console.log(e));
         // fetch genres and setGenres here
-        fetch('http://localhost:3000/genres')
+        fetch("http://localhost:3000/genres")
             .then((res) => res.json())
             .then((json) => setGenres(json))
             .catch((e) => console.log(e));
@@ -28,8 +28,31 @@ const App = () => {
     };
     const handleTestClick = function () {
         console.table(tracks);
-        console.table(genres);
+        console.log(genres);
+        if (genres) {
+            createGenreButtons(genres);
+        }
+        else {
+            console.error("'genre' is null");
+        }
     };
-    return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("h1", { children: "DJ Database" }), (0, jsx_runtime_1.jsx)("button", { onClick: handleTestClick, children: "TEST" }), tracks && (0, jsx_runtime_1.jsx)(Table_1.default, { tracks: tracks, handleSort: handleSort })] }));
+    //create a button for each item in the array
+    function createGenreButtons(btnNames) {
+        const buttonContainer = document.getElementById("button-container");
+        if (!buttonContainer) {
+            console.error("button-container div is null");
+            return;
+        }
+        btnNames.forEach((btnName) => {
+            const button = document.createElement("button");
+            button.textContent = btnName;
+            //show genre of clicked button in the console
+            button.addEventListener("click", () => {
+                console.log(btnName);
+            });
+            buttonContainer.appendChild(button);
+        });
+    }
+    return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("h1", { children: "DJ Database" }), (0, jsx_runtime_1.jsx)("button", { onClick: handleTestClick, children: "TEST" }), (0, jsx_runtime_1.jsx)("div", { id: "button-container" }), tracks && (0, jsx_runtime_1.jsx)(Table_1.default, { tracks: tracks, handleSort: handleSort })] }));
 };
 exports.default = App;
