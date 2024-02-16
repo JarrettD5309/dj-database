@@ -29,38 +29,15 @@ const App = (): ReactElement => {
   const handleTestClick = function (): void {
     console.table(tracks);
     console.log(genres);
-    if (genres) {
-      createGenreButtons(genres);
-    } else {
-      console.error("'genre' is null");
-    }
   };
 
-//create a button for each item in the array
-  function createGenreButtons(btnNames: string[]): void {
-    const buttonContainer = document.getElementById("button-container");
 
-    if (!buttonContainer) {
-      console.error("button-container div is null");
-      return;
-    }
-
-    btnNames.forEach((btnName) => {
-      const button = document.createElement("button");
-      button.textContent = btnName;
-      //show genre of clicked button in the console
-      button.addEventListener("click", () => {
-        console.log(btnName);
-      });
-      buttonContainer.appendChild(button);
-    });
-  }
 
   return (
     <>
       <h1>DJ Database</h1>
       <button onClick={handleTestClick}>TEST</button>
-      <div id="button-container"></div>
+      {genres?.map((genre) => (<button key={genre} onClick={() => console.log(genre)}>{genre}</button>))}
       {tracks && <Table tracks={tracks} handleSort={handleSort}></Table>}
     </>
   );

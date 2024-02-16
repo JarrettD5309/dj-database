@@ -29,30 +29,7 @@ const App = () => {
     const handleTestClick = function () {
         console.table(tracks);
         console.log(genres);
-        if (genres) {
-            createGenreButtons(genres);
-        }
-        else {
-            console.error("'genre' is null");
-        }
     };
-    //create a button for each item in the array
-    function createGenreButtons(btnNames) {
-        const buttonContainer = document.getElementById("button-container");
-        if (!buttonContainer) {
-            console.error("button-container div is null");
-            return;
-        }
-        btnNames.forEach((btnName) => {
-            const button = document.createElement("button");
-            button.textContent = btnName;
-            //show genre of clicked button in the console
-            button.addEventListener("click", () => {
-                console.log(btnName);
-            });
-            buttonContainer.appendChild(button);
-        });
-    }
-    return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("h1", { children: "DJ Database" }), (0, jsx_runtime_1.jsx)("button", { onClick: handleTestClick, children: "TEST" }), (0, jsx_runtime_1.jsx)("div", { id: "button-container" }), tracks && (0, jsx_runtime_1.jsx)(Table_1.default, { tracks: tracks, handleSort: handleSort })] }));
+    return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("h1", { children: "DJ Database" }), (0, jsx_runtime_1.jsx)("button", { onClick: handleTestClick, children: "TEST" }), genres === null || genres === void 0 ? void 0 : genres.map((genre) => ((0, jsx_runtime_1.jsx)("button", { onClick: () => console.log(genre), children: genre }, genre))), tracks && (0, jsx_runtime_1.jsx)(Table_1.default, { tracks: tracks, handleSort: handleSort })] }));
 };
 exports.default = App;
