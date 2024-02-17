@@ -20,6 +20,12 @@ module.exports = {
             "parserOptions": {
                 "sourceType": "script"
             }
+        },
+        {
+            "files": ["client/**/*.tsx"],
+            "rules": {
+                "quotes": ["error", "single", { "avoidEscape": true }],
+            }
         }
     ],
     "parser": "@typescript-eslint/parser",

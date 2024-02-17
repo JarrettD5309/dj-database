@@ -10,12 +10,11 @@ const App = () => {
     const [tracks, setTracks] = (0, react_1.useState)();
     const [genres, setGenres] = (0, react_1.useState)();
     (0, react_1.useEffect)(() => {
-        fetch("http://localhost:3000/tracks")
+        fetch('http://localhost:3000/tracks')
             .then((res) => res.json())
             .then((json) => setTracks(json))
             .catch((e) => console.log(e));
-        // fetch genres and setGenres here
-        fetch("http://localhost:3000/genres")
+        fetch('http://localhost:3000/genres')
             .then((res) => res.json())
             .then((json) => setGenres(json))
             .catch((e) => console.log(e));

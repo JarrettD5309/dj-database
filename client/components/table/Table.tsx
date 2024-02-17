@@ -1,6 +1,6 @@
-import { ReactElement } from "react";
+import { ReactElement } from 'react';
 import './style.css';
-import { DJColumn, Direction, ItemProps, TableProps } from "../../../shared/types";
+import { DJColumn, Direction, ItemProps, TableProps } from '../../../shared/types';
 
 const Table = ({ tracks, handleSort }: TableProps): ReactElement => (
   <div className="grid-container">
