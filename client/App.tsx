@@ -1,19 +1,18 @@
-import { ReactElement, useEffect, useState } from "react";
-import { Track } from "../shared/classes";
-import Table from "./components/table/Table";
+import { ReactElement, useEffect, useState } from 'react';
+import { Track } from '../shared/classes';
+import Table from './components/table/Table';
 
 const App = (): ReactElement => {
   const [tracks, setTracks] = useState<Track[]>();
   const [genres, setGenres] = useState<string[]>();
 
   useEffect(() => {
-    fetch("http://localhost:3000/tracks")
+    fetch('http://localhost:3000/tracks')
       .then((res) => res.json())
       .then((json) => setTracks(json))
       .catch((e) => console.log(e));
 
-    // fetch genres and setGenres here
-    fetch("http://localhost:3000/genres")
+    fetch('http://localhost:3000/genres')
       .then((res) => res.json())
       .then((json) => setGenres(json))
       .catch((e) => console.log(e));
