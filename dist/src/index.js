@@ -12,6 +12,11 @@ const app = (0, express_1.default)();
 app.get('/tracks', (req, res) => {
     res.json(record_mocks_1.trackCollection);
 });
+app.get('/search', (req, res) => {
+    const searchGenre = req.query.genre;
+    const genreTracks = record_mocks_1.trackCollection.filter((element) => element.genres.indexOf(searchGenre) !== -1);
+    res.json(genreTracks);
+});
 app.get('/sort', (req, res) => {
     const sortColumn = req.query.column;
     const sortDirection = req.query.direction;
