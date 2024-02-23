@@ -13,22 +13,30 @@ app.get('/tracks', (req: Request, res: Response<Track[]>): void => {
   res.json(trackCollection);
 });
 
-app.get('/sort', (req: Request<{column: string, direction: string}>, res: Response<Track[]>): void => {
+app.get('/search', (req: Request<{ genre: string}>, res: Response<Track[]>): void => {
+  const searchGenre: string = req.query.genre as string;
+
+  const genreTracks = trackCollection.filter((element: Track) => element.genres.indexOf(searchGenre) !== -1);
+
+  res.json(genreTracks);
+});
+
+app.get('/sort', (req: Request<{ column: string, direction: string }>, res: Response<Track[]>): void => {
   const sortColumn = req.query.column;
   const sortDirection = req.query.direction;
   let sortedRes: Track[] = [];
 
-  if(sortColumn === DJColumn.Artist || sortColumn === DJColumn.SongTitle) {
-    if(sortDirection === Direction.Acsend) {
-      sortedRes = [...trackCollection].sort((a, b) => a[sortColumn].localeCompare(b[sortColumn], 'en', {'sensitivity': 'base'}));
+  if (sortColumn === DJColumn.Artist || sortColumn === DJColumn.SongTitle) {
+    if (sortDirection === Direction.Acsend) {
+      sortedRes = [...trackCollection].sort((a, b) => a[sortColumn].localeCompare(b[sortColumn], 'en', { 'sensitivity': 'base' }));
     } else {
-      sortedRes = [...trackCollection].sort((a, b) => b[sortColumn].localeCompare(a[sortColumn], 'en', {'sensitivity': 'base'}));
+      sortedRes = [...trackCollection].sort((a, b) => b[sortColumn].localeCompare(a[sortColumn], 'en', { 'sensitivity': 'base' }));
     }
-  } else if(sortColumn === DJColumn.BPM) {
-    if(sortDirection === Direction.Acsend) {
-      sortedRes = [...trackCollection].sort((a, b) => a.bpm-b.bpm);
+  } else if (sortColumn === DJColumn.BPM) {
+    if (sortDirection === Direction.Acsend) {
+      sortedRes = [...trackCollection].sort((a, b) => a.bpm - b.bpm);
     } else {
-      sortedRes = [...trackCollection].sort((a, b) => b.bpm-a.bpm);
+      sortedRes = [...trackCollection].sort((a, b) => b.bpm - a.bpm);
     }
   }
 
@@ -36,17 +44,17 @@ app.get('/sort', (req: Request<{column: string, direction: string}>, res: Respon
 });
 
 app.get('/genres', (req: Request, res: Response<string[]>): void => {
-  const genresArr: (string|string[])[] = []; 
-  
+  const genresArr: (string | string[])[] = [];
+
   trackCollection.forEach((element: Track) => genresArr.push(element.genres));
 
   const uniqueGenreArr = genresArr.flat()
     .filter((genreElement: string, i: number, array: string[]) => array.indexOf(genreElement) === i);
-    
+
   res.json(uniqueGenreArr);
 });
 
-app.use(express.static(path.join(__dirname, '../../public'), {index: false}));
+app.use(express.static(path.join(__dirname, '../../public'), { index: false }));
 
 app.get('*', (req: Request, res: Response<string>, next: NextFunction): void => {
   try {

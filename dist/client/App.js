@@ -9,18 +9,25 @@ const Table_1 = __importDefault(require("./components/table/Table"));
 const App = () => {
     const [tracks, setTracks] = (0, react_1.useState)();
     const [genres, setGenres] = (0, react_1.useState)();
+    const URL = 'http://localhost:3000';
     (0, react_1.useEffect)(() => {
-        fetch('http://localhost:3000/tracks')
+        fetch(`${URL}/tracks`)
             .then((res) => res.json())
             .then((json) => setTracks(json))
             .catch((e) => console.log(e));
-        fetch('http://localhost:3000/genres')
+        fetch(`${URL}/genres`)
             .then((res) => res.json())
             .then((json) => setGenres(json))
             .catch((e) => console.log(e));
     }, []);
+    const handleGenreSearch = (genre) => {
+        fetch(`${URL}/search?genre=${genre}`)
+            .then((res) => res.json())
+            .then((json) => setTracks(json))
+            .catch((e) => console.log(e));
+    };
     const handleSort = (column, direction) => {
-        fetch(`http://localhost:3000/sort?column=${column}&direction=${direction}`)
+        fetch(`${URL}/sort?column=${column}&direction=${direction}`)
             .then((res) => res.json())
             .then((json) => setTracks(json))
             .catch((e) => console.log(e));
@@ -29,6 +36,6 @@ const App = () => {
         console.table(tracks);
         console.log(genres);
     };
-    return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("h1", { children: "DJ Database" }), (0, jsx_runtime_1.jsx)("button", { onClick: handleTestClick, children: "TEST" }), genres === null || genres === void 0 ? void 0 : genres.map((genre) => ((0, jsx_runtime_1.jsx)("button", { onClick: () => console.log(genre), children: genre }, genre))), tracks && (0, jsx_runtime_1.jsx)(Table_1.default, { tracks: tracks, handleSort: handleSort })] }));
+    return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("h1", { children: "DJ Database" }), (0, jsx_runtime_1.jsx)("button", { onClick: handleTestClick, children: "TEST" }), genres === null || genres === void 0 ? void 0 : genres.map((genre) => ((0, jsx_runtime_1.jsx)("button", { onClick: () => handleGenreSearch(genre), children: genre }, genre))), tracks && (0, jsx_runtime_1.jsx)(Table_1.default, { tracks: tracks, handleSort: handleSort })] }));
 };
 exports.default = App;
