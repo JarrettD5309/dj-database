@@ -39,9 +39,9 @@ const App = (): ReactElement => {
   };
 
   const handleTestClick = function (): void {
+    fetchTracks();
     console.table(tracks);
     console.log(genres);
-    fetchTracks();
   };
 
 
@@ -49,7 +49,7 @@ const App = (): ReactElement => {
   return (
     <>
       <h1>DJ Database</h1>
-      <button onClick={(handleTestClick)}>TEST</button>
+      <button onClick={handleTestClick}>TEST</button>
       {genres?.map((genre) => (<button key={genre} onClick={() => handleGenreSearch(genre)}>{genre}</button>))}
       {tracks && <Table tracks={tracks} handleSort={handleSort}></Table>}
     </>
