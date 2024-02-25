@@ -9,16 +9,20 @@ const App = (): ReactElement => {
   const URL: string = 'http://localhost:3000';
 
   useEffect(() => {
-    fetch(`${URL}/tracks`)
-      .then((res) => res.json())
-      .then((json) => setTracks(json))
-      .catch((e) => console.log(e));
+    fetchTracks();
 
     fetch(`${URL}/genres`)
       .then((res) => res.json())
       .then((json) => setGenres(json))
       .catch((e) => console.log(e));
   }, []);
+
+  const fetchTracks = () => {
+    fetch(`${URL}/tracks`)
+    .then((res) => res.json())
+    .then((json) => setTracks(json))
+    .catch((e) => console.log(e));    
+  };
 
   const handleGenreSearch = (genre: string) => {
     fetch(`${URL}/search?genre=${genre}`)
@@ -35,6 +39,7 @@ const App = (): ReactElement => {
   };
 
   const handleTestClick = function (): void {
+    fetchTracks();
     console.table(tracks);
     console.log(genres);
   };
