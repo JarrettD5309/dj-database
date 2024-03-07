@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import './style.css';
 import { DJColumn, Direction, ItemProps, TableProps } from '../../../shared/types';
 
@@ -18,7 +18,6 @@ const Table = ({ tracks, handleSort }: TableProps): ReactElement => (
           onClick={() => handleSort(DJColumn.Artist, Direction.Descend)}>
           &#9660;
         </span>
-
       </div>
       <div className="grid-item">Title
         &nbsp;
@@ -50,12 +49,19 @@ const Table = ({ tracks, handleSort }: TableProps): ReactElement => (
       </div>
       <div className="grid-item">Position</div>
       <div className="grid-item">RPM</div>
+      <div className="grid-item">Details</div>
     </>
     {tracks.map((item, i) => <TableItem key={i} item={item} />)}
   </div>
 );
 
 const TableItem = ({ item }: ItemProps): ReactElement => {
+  const [isDetailOpen, setIsDetailOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsDetailOpen(false);
+  }, [item]);
+
   return (
     <>
       <div className="grid-item">{item.artist}</div>
@@ -63,6 +69,18 @@ const TableItem = ({ item }: ItemProps): ReactElement => {
       <div className="grid-item">{item.bpm}</div>
       <div className="grid-item">{item.position}</div>
       <div className="grid-item">{item.rpm}</div>
+      <div className="grid-item"><button onClick={() => setIsDetailOpen(!isDetailOpen)}>{isDetailOpen ? 'Close' : 'Open'}</button></div>
+      {isDetailOpen && (<div className="grid-item" style={{ gridColumn: '1 / -1' }}>
+        <p>Artist: {item.artist}</p>
+        <p>Song: {item.songTitle}</p>
+        <p>BPM: {item.bpm}</p>
+        <p>Position: {item.position}</p>
+        <p>Speed: {item.rpm}</p>
+        <p>Genre: {item.genres.join(', ')}</p>
+        <p>Release: {item.release}</p>
+        <p>Year: {item.year}</p>
+        <p>Discogs: <a href={item.discogsLink} target='_blank' rel="noreferrer">{item.discogsLink}</a></p>
+      </div>)}
     </>
   );
 };
