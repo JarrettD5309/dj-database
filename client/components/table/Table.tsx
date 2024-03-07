@@ -9,7 +9,7 @@ const Table = ({ tracks, handleSort }: TableProps): ReactElement => (
         &nbsp;
         <span
           className="click-hand"
-          onClick={() => handleSort(DJColumn.Artist, Direction.Acsend)}>
+          onClick={() => handleSort(DJColumn.Artist, Direction.Ascend)}>
           &#9650;
         </span>
         &nbsp;
@@ -23,7 +23,7 @@ const Table = ({ tracks, handleSort }: TableProps): ReactElement => (
         &nbsp;
         <span
           className="click-hand"
-          onClick={() => handleSort(DJColumn.SongTitle, Direction.Acsend)}>
+          onClick={() => handleSort(DJColumn.SongTitle, Direction.Ascend)}>
           &#9650;
         </span>
         &nbsp;
@@ -37,7 +37,7 @@ const Table = ({ tracks, handleSort }: TableProps): ReactElement => (
         &nbsp;
         <span
           className="click-hand"
-          onClick={() => handleSort(DJColumn.BPM, Direction.Acsend)}>
+          onClick={() => handleSort(DJColumn.BPM, Direction.Ascend)}>
           &#9650;
         </span>
         &nbsp;

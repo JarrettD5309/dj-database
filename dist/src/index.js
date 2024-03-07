@@ -20,21 +20,25 @@ app.get('/search', (req, res) => {
 app.get('/sort', (req, res) => {
     const sortColumn = req.query.column;
     const sortDirection = req.query.direction;
+    const sortGenre = req.query.genre;
     let sortedRes = [];
+    const genreTracks = sortGenre ?
+        record_mocks_1.trackCollection.filter((element) => element.genres.indexOf(sortGenre) !== -1) :
+        [...record_mocks_1.trackCollection];
     if (sortColumn === types_1.DJColumn.Artist || sortColumn === types_1.DJColumn.SongTitle) {
-        if (sortDirection === types_1.Direction.Acsend) {
-            sortedRes = [...record_mocks_1.trackCollection].sort((a, b) => a[sortColumn].localeCompare(b[sortColumn], 'en', { 'sensitivity': 'base' }));
+        if (sortDirection === types_1.Direction.Ascend) {
+            sortedRes = [...genreTracks].sort((a, b) => a[sortColumn].localeCompare(b[sortColumn], 'en', { 'sensitivity': 'base' }));
         }
         else {
-            sortedRes = [...record_mocks_1.trackCollection].sort((a, b) => b[sortColumn].localeCompare(a[sortColumn], 'en', { 'sensitivity': 'base' }));
+            sortedRes = [...genreTracks].sort((a, b) => b[sortColumn].localeCompare(a[sortColumn], 'en', { 'sensitivity': 'base' }));
         }
     }
     else if (sortColumn === types_1.DJColumn.BPM) {
-        if (sortDirection === types_1.Direction.Acsend) {
-            sortedRes = [...record_mocks_1.trackCollection].sort((a, b) => a.bpm - b.bpm);
+        if (sortDirection === types_1.Direction.Ascend) {
+            sortedRes = [...genreTracks].sort((a, b) => a.bpm - b.bpm);
         }
         else {
-            sortedRes = [...record_mocks_1.trackCollection].sort((a, b) => b.bpm - a.bpm);
+            sortedRes = [...genreTracks].sort((a, b) => b.bpm - a.bpm);
         }
     }
     res.json(sortedRes);
