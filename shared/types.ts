@@ -10,7 +10,7 @@ interface TableProps {
 }
 
 enum Direction {
-  Acsend = 'ascend',
+  Ascend = 'ascend',
   Descend = 'descend'
 }
 

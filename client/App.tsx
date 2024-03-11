@@ -5,6 +5,7 @@ import Table from './components/table/Table';
 const App = (): ReactElement => {
   const [tracks, setTracks] = useState<Track[]>();
   const [genres, setGenres] = useState<string[]>();
+  const [currentGenre, setCurrentGenre] = useState<string>('');  
 
   const URL: string = 'http://localhost:3000';
 
@@ -31,17 +32,23 @@ const App = (): ReactElement => {
       .catch((e) => console.log(e));
   };
 
+  const handleGenreClick = (genre: string) => {
+    handleGenreSearch(genre);
+    setCurrentGenre(genre);
+  };
+
   const handleSort = (column: string, direction: string): void => {
-    fetch(`${URL}/sort?column=${column}&direction=${direction}`)
+    fetch(`${URL}/sort?column=${column}&direction=${direction}&genre=${currentGenre}`)
       .then((res) => res.json())
       .then((json) => setTracks(json))
       .catch((e) => console.log(e));
   };
 
   const handleTestClick = function (): void {
-    fetchTracks();
+    // fetchTracks();
     console.table(tracks);
     console.log(genres);
+    console.log('currentGenre', currentGenre);
   };
 
 
@@ -50,7 +57,7 @@ const App = (): ReactElement => {
     <>
       <h1>DJ Database</h1>
       <button onClick={handleTestClick}>TEST</button>
-      {genres?.map((genre) => (<button key={genre} onClick={() => handleGenreSearch(genre)}>{genre}</button>))}
+      {genres?.map((genre) => (<button key={genre} onClick={() => handleGenreClick(genre)}>{genre}</button>))}
       {tracks && <Table tracks={tracks} handleSort={handleSort}></Table>}
     </>
   );

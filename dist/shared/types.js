@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Direction = exports.DJColumn = void 0;
 var Direction;
 (function (Direction) {
-    Direction["Acsend"] = "ascend";
+    Direction["Ascend"] = "ascend";
     Direction["Descend"] = "descend";
 })(Direction || (exports.Direction = Direction = {}));
 var DJColumn;

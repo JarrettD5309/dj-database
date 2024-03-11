@@ -21,22 +21,29 @@ app.get('/search', (req: Request<{ genre: string}>, res: Response<Track[]>): voi
   res.json(genreTracks);
 });
 
-app.get('/sort', (req: Request<{ column: string, direction: string }>, res: Response<Track[]>): void => {
+app.get('/sort', (req: Request<{ column: string, direction: string, genre: string }>, res: Response<Track[]>): void => {
   const sortColumn = req.query.column;
   const sortDirection = req.query.direction;
+  const sortGenre = req.query.genre as string;
   let sortedRes: Track[] = [];
 
+  const genreTracks =  
+    sortGenre ? 
+      trackCollection.filter((element: Track) => element.genres.indexOf(sortGenre) !== -1) :
+      [...trackCollection];
+ 
+
   if (sortColumn === DJColumn.Artist || sortColumn === DJColumn.SongTitle) {
-    if (sortDirection === Direction.Acsend) {
-      sortedRes = [...trackCollection].sort((a, b) => a[sortColumn].localeCompare(b[sortColumn], 'en', { 'sensitivity': 'base' }));
+    if (sortDirection === Direction.Ascend) {
+      sortedRes = [...genreTracks].sort((a, b) => a[sortColumn].localeCompare(b[sortColumn], 'en', { 'sensitivity': 'base' }));
     } else {
-      sortedRes = [...trackCollection].sort((a, b) => b[sortColumn].localeCompare(a[sortColumn], 'en', { 'sensitivity': 'base' }));
+      sortedRes = [...genreTracks].sort((a, b) => b[sortColumn].localeCompare(a[sortColumn], 'en', { 'sensitivity': 'base' }));
     }
   } else if (sortColumn === DJColumn.BPM) {
-    if (sortDirection === Direction.Acsend) {
-      sortedRes = [...trackCollection].sort((a, b) => a.bpm - b.bpm);
+    if (sortDirection === Direction.Ascend) {
+      sortedRes = [...genreTracks].sort((a, b) => a.bpm - b.bpm);
     } else {
-      sortedRes = [...trackCollection].sort((a, b) => b.bpm - a.bpm);
+      sortedRes = [...genreTracks].sort((a, b) => b.bpm - a.bpm);
     }
   }
 
