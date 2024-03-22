@@ -4,12 +4,17 @@ import App from './App';
 import './reset.css';
 import { RouteObject, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
+import ReleasePage from './pages/ReleasePage/ReleasePage';
 
 const routes: RouteObject[] = [
   {
     path: '/',
     element: <App />,
     errorElement: <ErrorPage />
+  },
+  {
+    path: '/release',
+    element: <ReleasePage />
   }
 ];
 

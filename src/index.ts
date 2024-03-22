@@ -4,6 +4,7 @@ import path from 'path';
 import { trackCollection } from '../mocks/record-mocks';
 import { Track } from '../shared/classes';
 import { DJColumn, Direction } from '../shared/types';
+import { discogsApi } from './discogs';
 
 const PORT: number = 3000;
 
@@ -60,6 +61,8 @@ app.get('/genres', (req: Request, res: Response<string[]>): void => {
 
   res.json(uniqueGenreArr);
 });
+
+discogsApi(app);
 
 app.use(express.static(path.join(__dirname, '../../public'), { index: false }));
 

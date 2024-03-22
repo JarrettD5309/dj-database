@@ -1,5 +1,6 @@
 import {screen, render} from '@testing-library/react';
-import ErrorPage from '../ErrorPage';
+import ErrorPage from './ErrorPage';
+import React from 'react';
 
 describe('ErrorPage', () => {
   test('check text', () => {
