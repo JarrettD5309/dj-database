@@ -57,7 +57,7 @@ const App = (): ReactElement => {
     <>
       <h1>DJ Database</h1>
       <button onClick={handleTestClick}>TEST</button>
-      {genres?.map((genre) => (<button key={genre} onClick={() => handleGenreClick(genre)}>{genre}</button>))}
+      {genres?.map((genre) => (<button key={genre} className="genre-button" onClick={() => handleGenreClick(genre)}>{genre}</button>))}
       {tracks && <Table tracks={tracks} handleSort={handleSort}></Table>}
     </>
   );
