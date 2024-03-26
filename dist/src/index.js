@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const record_mocks_1 = require("../mocks/record-mocks");
 const types_1 = require("../shared/types");
+const discogs_1 = require("./discogs");
 const PORT = 3000;
 const app = (0, express_1.default)();
 app.get('/tracks', (req, res) => {
@@ -50,6 +51,7 @@ app.get('/genres', (req, res) => {
         .filter((genreElement, i, array) => array.indexOf(genreElement) === i);
     res.json(uniqueGenreArr);
 });
+(0, discogs_1.discogsApi)(app);
 app.use(express_1.default.static(path_1.default.join(__dirname, '../../public'), { index: false }));
 app.get('*', (req, res, next) => {
     try {

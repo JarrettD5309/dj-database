@@ -10,11 +10,16 @@ const App_1 = __importDefault(require("./App"));
 require("./reset.css");
 const react_router_dom_1 = require("react-router-dom");
 const ErrorPage_1 = __importDefault(require("./pages/ErrorPage/ErrorPage"));
+const ReleasePage_1 = __importDefault(require("./pages/ReleasePage/ReleasePage"));
 const routes = [
     {
         path: '/',
         element: (0, jsx_runtime_1.jsx)(App_1.default, {}),
         errorElement: (0, jsx_runtime_1.jsx)(ErrorPage_1.default, {})
+    },
+    {
+        path: '/release',
+        element: (0, jsx_runtime_1.jsx)(ReleasePage_1.default, {})
     }
 ];
 const router = (0, react_router_dom_1.createBrowserRouter)(routes);
