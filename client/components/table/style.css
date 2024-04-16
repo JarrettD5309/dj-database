@@ -7,30 +7,10 @@
   --drk-grey: rgb(104,109,159);
 }
 
-body{
-  background-color: var(--drk-grey);
-}
-
-.click-hand {
-  cursor: pointer;
-}
-
 .grid-container {
   display: grid;
   grid-template-columns: repeat(6, auto);
   background-color: #ffffff;
-}
-
-a{
-  color: var(--drk-teal)
-}
-
-.tr{
-  background-color: var(--lght-teal);
-}
-
-.click-hand{
-  color: var(--drk-blue)
 }
 
 .grid-item {
@@ -54,12 +34,19 @@ a{
   text-align: left;
 }
 
-button{
+.tr{
+  background-color: var(--lght-teal);
+}
+
+.details-button{
   background-color: var(--lght-teal);
   border-radius: 5px;
   color: var(--drk-blue);
   border: 2px solid var(--drk-blue);
 }
+
+
+
 
 .genre-button{
   background-color: var(--drk-teal);

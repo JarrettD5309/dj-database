@@ -69,10 +69,11 @@ const TableItem = ({ item }: ItemProps): ReactElement => {
       <div className="grid-item">{item.bpm}</div>
       <div className="grid-item">{item.position}</div>
       <div className="grid-item">{item.rpm}</div>
-      <div className="grid-item"><button onClick={() => setIsDetailOpen(!isDetailOpen)}>{isDetailOpen ? 'Close' : 'Open'}</button></div>
+      <div className="grid-item"><button className="details-button" onClick={() => setIsDetailOpen(!isDetailOpen)}>{isDetailOpen ? 'Close' : 'Open'}</button></div>
       {isDetailOpen && (<div className="grid-item details" style={{ gridColumn: '1 / -1' }}>
          <div className="details-art">
-          <img src="https://i.discogs.com/-cRDCtkYHWq6Fz8FUmZjhBWabtESAg05AGDLVf0bjlI/rs:fit/g:sm/q:90/h:586/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIwODUt/MTQ5Nzc4MjEzMi05/MTk0LnBuZw.jpeg" alt="album art" height="150" width="150" />
+          <img src="https://i.discogs.com/-cRDCtkYHWq6Fz8FUmZjhBWabtESAg05AGDLVf0bjlI/rs:fit/g:sm/q:90/h:586/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIwODUt/MTQ5Nzc4MjEzMi05/MTk0LnBuZw.jpeg" 
+            alt="album art" height="150" width="150" />
          </div>
           <div className="details-list">
             <p>Artist: {item.artist}</p>
