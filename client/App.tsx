@@ -1,10 +1,12 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { Track } from '../shared/classes';
 import Table from './components/table/Table';
+import GenreButtons from './components/genre-buttons/GenreButtons';
+import './style.css';
 
 const App = (): ReactElement => {
   const [tracks, setTracks] = useState<Track[]>();
-  const [genres, setGenres] = useState<string[]>();
+  const [genres, setGenres] = useState<string[]>([]);
   const [currentGenre, setCurrentGenre] = useState<string>('');  
 
   const URL: string = 'http://localhost:3000';
@@ -57,7 +59,7 @@ const App = (): ReactElement => {
     <>
       <h1>DJ Database</h1>
       <button onClick={handleTestClick}>TEST</button>
-      {genres?.map((genre) => (<button key={genre} className="genre-button" onClick={() => handleGenreClick(genre)}>{genre}</button>))}
+      <GenreButtons genres={genres} handleGenreClick={handleGenreClick}></GenreButtons>
       {tracks && <Table tracks={tracks} handleSort={handleSort}></Table>}
     </>
   );

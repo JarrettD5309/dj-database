@@ -1,0 +1,5 @@
+.genre-button{
+  background-color: var(--drk-teal);
+  color: var(--lght-teal);
+  border: 2px solid var(--drk-blue);
+}
