@@ -30,6 +30,11 @@ interface DiscogsRes {
   }[]
 }
 
+interface GenreButtonsProps {
+  genres: string[],
+  handleGenreClick: (genre: string) => void,
+}
+
 interface ItemProps {
   item: Track
 }
@@ -52,6 +57,7 @@ enum DJColumn {
 
 export {
   type DiscogsRes,
+  type GenreButtonsProps,
   type ItemProps,
   type TableProps,
   DJColumn,

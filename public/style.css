@@ -1,12 +1,1 @@
-body{
-    background-color: var(--drk-grey);
-  }
 
-  a{
-    color: var(--drk-teal)
-  }
-  
-  .click-hand {
-    color: var(--drk-blue);
-    cursor: pointer;
-  }

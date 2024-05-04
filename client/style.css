@@ -1,0 +1,20 @@
+:root {
+  --drk-blue: rgb(43, 51, 124);
+  --lght-blue: rgb(77, 84, 148);
+  --lght-teal: rgb(9, 209, 209);
+  --drk-teal: rgb(25, 107, 146);
+  --lght-grey: rgb(176, 178, 192);
+  --drk-grey: rgb(104, 109, 159);
+}
+
+body {
+  background-color: var(--drk-grey);
+}
+
+a {
+  color: var(--drk-teal)
+}
+
+button {
+  cursor: pointer;
+}
